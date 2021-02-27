@@ -1,28 +1,36 @@
 const english = 'american'
 
+const contexts = ['selection']
+
 const contextMenus = [
+  {
+    title: 'All dictionaries',
+    id: 'all',
+    contexts
+  },
+
   {
     title: 'Macmillan',
     id: 'macmillan',
-    contexts: ['selection']
+    contexts
   },
 
   {
     title: 'Cambridge',
     id: 'cambridge',
-    contexts: ['selection']
+    contexts
   },
 
   {
     title: 'Collins',
     id: 'collins',
-    contexts: ['selection']
+    contexts
   },
 
   {
     title: 'Longman',
     id: 'longman',
-    contexts: ['selection']
+    contexts
   },
 ]
 
@@ -38,11 +46,35 @@ function createContextMenus (contextMenus) {
 
 function initContextListeners () {
   chrome.contextMenus.onClicked.addListener((clickData) => {
+    goToAllDictionaries(clickData)
     goToMacmillan(clickData)
     goToCambridge(clickData)
     goToCollins(clickData)
     goToLongman(clickData)
   })
+}
+
+function goToAllDictionaries (clickData) {
+  if (clickData.menuItemId === 'all' && clickData.selectionText) {
+    chrome.tabs.create({
+      url: `https://www.macmillandictionary.com/dictionary/${english}/${clickData.selectionText}`
+    })
+
+    chrome.tabs.create({
+      active: false,
+      url: `https://dictionary.cambridge.org/dictionary/english/${clickData.selectionText}`
+    })
+
+    chrome.tabs.create({
+      active: false,
+      url: `https://www.collinsdictionary.com/dictionary/english/${clickData.selectionText}`
+    })
+
+    chrome.tabs.create({
+      active: false,
+      url: `https://www.ldoceonline.com/dictionary/${clickData.selectionText}`
+    })
+  }
 }
 
 function goToMacmillan (clickData) {
@@ -77,5 +109,7 @@ function goToLongman (clickData) {
   }
 }
 
-createContextMenus(contextMenus)
-initContextListeners()
+chrome.runtime.onInstalled.addListener(() => {
+  createContextMenus(contextMenus)
+  initContextListeners()
+})
