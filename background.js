@@ -1,5 +1,12 @@
 const english = 'american'
 
+const baseUrls = [
+  `https://www.macmillandictionary.com/dictionary/${english}/`,
+  `https://dictionary.cambridge.org/dictionary/english/`,
+  `https://www.collinsdictionary.com/dictionary/english/`,
+  `https://www.ldoceonline.com/dictionary/`,
+]
+
 const contexts = ['selection']
 
 const contextMenus = [
@@ -46,7 +53,7 @@ function createContextMenus (contextMenus) {
 
 function initContextListeners () {
   chrome.contextMenus.onClicked.addListener((clickData) => {
-    goToAllDictionaries(clickData)
+    goToAllDictionaries(clickData, baseUrls)
     goToMacmillan(clickData)
     goToCambridge(clickData)
     goToCollins(clickData)
@@ -54,25 +61,12 @@ function initContextListeners () {
   })
 }
 
-function goToAllDictionaries (clickData) {
+function goToAllDictionaries (clickData, baseUrls) {
   if (clickData.menuItemId === 'all' && clickData.selectionText) {
-    chrome.tabs.create({
-      url: `https://www.macmillandictionary.com/dictionary/${english}/${clickData.selectionText}`
-    })
-
-    chrome.tabs.create({
-      active: false,
-      url: `https://dictionary.cambridge.org/dictionary/english/${clickData.selectionText}`
-    })
-
-    chrome.tabs.create({
-      active: false,
-      url: `https://www.collinsdictionary.com/dictionary/english/${clickData.selectionText}`
-    })
-
-    chrome.tabs.create({
-      active: false,
-      url: `https://www.ldoceonline.com/dictionary/${clickData.selectionText}`
+    baseUrls.forEach(url => {
+      chrome.tabs.create({
+        url: `${url}/${clickData.selectionText}`
+      })
     })
   }
 }
