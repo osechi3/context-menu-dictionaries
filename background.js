@@ -1,10 +1,26 @@
 const english = 'american'
+const mainDictionaryId = 'collins'
 
-const baseUrls = [
-  `https://www.macmillandictionary.com/dictionary/${english}/`,
-  `https://dictionary.cambridge.org/dictionary/english/`,
-  `https://www.collinsdictionary.com/dictionary/english/`,
-  `https://www.ldoceonline.com/dictionary/`,
+const dictionaries = [
+  {
+    id: 'macmillan',
+    baseUrl: `https://www.macmillandictionary.com/dictionary/${english}/`
+  },
+
+  {
+    id: 'cambridge',
+    baseUrl: `https://dictionary.cambridge.org/dictionary/english/`
+  },
+
+  {
+    id: 'collins',
+    baseUrl: `https://www.collinsdictionary.com/dictionary/english/`
+  },
+
+  {
+    id: 'longman',
+    baseUrl: `https://www.ldoceonline.com/dictionary/`
+  },
 ]
 
 const contexts = ['selection']
@@ -53,7 +69,7 @@ function createContextMenus (contextMenus) {
 
 function initContextListeners () {
   chrome.contextMenus.onClicked.addListener((clickData) => {
-    goToAllDictionaries(clickData, baseUrls)
+    goToAllDictionaries(clickData, dictionaries, mainDictionaryId)
     goToMacmillan(clickData)
     goToCambridge(clickData)
     goToCollins(clickData)
@@ -61,11 +77,12 @@ function initContextListeners () {
   })
 }
 
-function goToAllDictionaries (clickData, baseUrls) {
+function goToAllDictionaries (clickData, dictionaries, mainDictionaryId) {
   if (clickData.menuItemId === 'all' && clickData.selectionText) {
-    baseUrls.forEach(url => {
+    dictionaries.forEach(dict => {
       chrome.tabs.create({
-        url: `${url}/${clickData.selectionText}`
+        url: `${dict.baseUrl}/${clickData.selectionText}`,
+        active: dict.id === mainDictionaryId ? true : false
       })
     })
   }
