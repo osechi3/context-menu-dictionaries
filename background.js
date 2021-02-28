@@ -69,6 +69,8 @@ function createContextMenus (contextMenus) {
 
 function initContextListeners () {
   chrome.contextMenus.onClicked.addListener((clickData) => {
+    clickData.selectionText = clickData.selectionText.replace(/\s/g, '-')
+
     goToAllDictionaries(clickData, dictionaries, mainDictionaryId)
     goToMacmillan(clickData)
     goToCambridge(clickData)
