@@ -4,22 +4,22 @@ const mainDictionaryId = 'collins'
 const dictionaries = [
   {
     id: 'macmillan',
-    baseUrl: `https://www.macmillandictionary.com/dictionary/${english}/`
+    baseUrl: `https://www.macmillandictionary.com/dictionary/${english}`
   },
 
   {
     id: 'cambridge',
-    baseUrl: `https://dictionary.cambridge.org/dictionary/english/`
+    baseUrl: `https://dictionary.cambridge.org/dictionary/english`
   },
 
   {
     id: 'collins',
-    baseUrl: `https://www.collinsdictionary.com/dictionary/english/`
+    baseUrl: `https://www.collinsdictionary.com/dictionary/english`
   },
 
   {
     id: 'longman',
-    baseUrl: `https://www.ldoceonline.com/dictionary/`
+    baseUrl: `https://www.ldoceonline.com/dictionary`
   },
 ]
 
