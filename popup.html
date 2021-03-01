@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-<head></head>
-<body>
-  <h1>Hello World</h1>
-  <label for="main-dictionary">Choose your main dictionary:</label>
-  <select class="main-dictionary-selector" name="mainDictionary" id="main-dictionary">
+<head>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body class="popup">
+  <h1 class="popup__title">Settings</h1>
+  <label class="popup__label" for="main-dictionary">Choose your main dictionary:</label>
+  <select class="popup__main-dictionary-selector" name="mainDictionary" id="main-dictionary">
     <option value="macmillan">Macmillan</option>
     <option value="cambridge">Cambridge</option>
     <option value="collins">Collins</option>
     <option value="longman">Longman</option>
   </select>
-  <button class="save-btn" type="button">Save</button>
+  <button class="popup__apply-btn" type="button">Apply</button>
   <script src="popup.js"></script>
 </body>
 </html>

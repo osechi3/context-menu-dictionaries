@@ -1,5 +1,6 @@
-const mainDictionary = document.querySelector('.main-dictionary-selector')
-const saveBtn = document.querySelector('.save-btn')
+const mainDictionary =
+  document.querySelector('.popup__main-dictionary-selector')
+const saveBtn = document.querySelector('.popup__apply-btn')
 
 saveBtn.addEventListener(
   'click',

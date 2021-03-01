@@ -1,0 +1,32 @@
+.popup {
+  display: flex;
+  flex-direction: column;
+  width: 240px;
+  height: 200px;
+}
+
+.popup__title {
+  margin: 5px 0;
+
+  text-align: center;
+}
+
+.popup__label {
+  margin: 4px 0;
+
+  font-size: 1rem;
+}
+
+.popup__main-dictionary-selector {
+  font-size: .9rem;
+}
+
+.popup__apply-btn {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70vw;
+
+  font-size: 1rem;
+}
