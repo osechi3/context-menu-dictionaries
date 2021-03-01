@@ -1,11 +1,5 @@
 const english = 'american'
-let mainDictionaryId = 'macmillan'
-
-chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-  console.log(message.id)
-  mainDictionaryId = message.id
-})
-
+let mainDictionaryId
 
 const dictionaries = [
   {
@@ -73,6 +67,19 @@ function createContextMenus (contextMenus) {
   })
 }
 
+function getStorageData () {
+  chrome.storage.sync.get(['mainDictionary'], (result) => {
+    mainDictionaryId = result.mainDictionary ? result.mainDictionary : 'macmillan'
+  })
+}
+
+function initOnMessageListeners () {
+  chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    mainDictionaryId = message.id
+    chrome.storage.sync.set({ mainDictionary: message.id })
+  })
+}
+
 function initContextListeners () {
   chrome.contextMenus.onClicked.addListener((clickData) => {
     clickData.selectionText = clickData.selectionText.replace(/\s/g, '-')
@@ -131,4 +138,6 @@ function goToLongman (clickData) {
 chrome.runtime.onInstalled.addListener(() => {
   createContextMenus(contextMenus)
   initContextListeners()
+  initOnMessageListeners()
+  getStorageData()
 })

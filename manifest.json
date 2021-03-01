@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "English Dictionaries",
   "version": "0.1",
-  "permissions": ["contextMenus"],
+  "permissions": ["contextMenus", "storage"],
   "background": { "scripts": ["background.js"] },
   "icons": { "16": "icon.png" },
   "browser_action": {
