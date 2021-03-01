@@ -135,9 +135,7 @@ function goToLongman (clickData) {
   }
 }
 
-chrome.runtime.onInstalled.addListener(() => {
-  createContextMenus(contextMenus)
-  initContextListeners()
-  initOnMessageListeners()
-  getStorageData()
-})
+createContextMenus(contextMenus)
+initContextListeners()
+initOnMessageListeners()
+getStorageData()
