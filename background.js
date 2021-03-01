@@ -1,5 +1,11 @@
 const english = 'american'
-const mainDictionaryId = 'collins'
+let mainDictionaryId = 'macmillan'
+
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  console.log(message.id)
+  mainDictionaryId = message.id
+})
+
 
 const dictionaries = [
   {
