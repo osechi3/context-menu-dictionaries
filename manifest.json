@@ -3,7 +3,7 @@
   "name": "English Dictionaries",
   "version": "0.1",
   "permissions": ["contextMenus", "storage"],
-  "background": { "page": "background.html" },
+  "background": { "page": "background/background.html" },
   "icons": { "16": "icon.png" },
   "browser_action": {
     "default_icon": "icon.png",

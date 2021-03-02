@@ -1,4 +1,4 @@
-import { settings, dictionaries, contextMenus } from './settings.js'
+import { settings, dictionaries, contextMenus } from '../settings.js'
 
 function createContextMenus (contextMenus) {
   contextMenus.forEach(menu => {
