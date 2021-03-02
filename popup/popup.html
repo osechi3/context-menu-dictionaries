@@ -5,14 +5,27 @@
 </head>
 <body class="popup">
   <h1 class="popup__title">Settings</h1>
-  <label class="popup__label" for="main-dictionary">Choose your main dictionary:</label>
-  <select class="popup__main-dictionary-selector" name="mainDictionary" id="main-dictionary">
-    <option value="macmillan">Macmillan</option>
-    <option value="cambridge">Cambridge</option>
-    <option value="collins">Collins</option>
-    <option value="longman">Longman</option>
-  </select>
-  <button class="popup__apply-btn" type="button">Apply</button>
+
+  <section class="popup__section popup__main-dictionary-section">
+    <h2 class="popup__section-title">General:</h2>
+    <label class="popup__label" for="main-dictionary">Choose your main dictionary:</label>
+    <select class="popup__select popup__main-dictionary-selector" name="mainDictionary" id="main-dictionary">
+      <option value="macmillan">Macmillan</option>
+      <option value="cambridge">Cambridge</option>
+      <option value="collins">Collins</option>
+      <option value="longman">Longman</option>
+    </select>
+  </section>
+
+  <section class="popup__section popup__english-varaint-section">
+    <h2 class="popup__section-title">Macmillan:</h2>
+    <label class="popup__label" for="english-variant">Choose an English variant:</label>
+    <select class="popup__select popup__english-variant-selector" name="englishVariant" id="english-variant">
+      <option value="american">American</option>
+      <option value="british">British</option>
+    </select>
+  </section>
+
   <script type="module" src="popup.js"></script>
 </body>
 </html>

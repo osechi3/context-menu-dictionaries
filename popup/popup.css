@@ -1,8 +1,32 @@
+html {
+  box-sizing: border-box;
+
+  font-size: 16px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
 .popup {
   display: flex;
   flex-direction: column;
   width: 240px;
-  height: 200px;
+  height: 280px;
+}
+
+.popup__section {
+  display: flex;
+  flex-direction: column;
+  padding: 14px 0;
+
+  border-bottom: 1px dashed #999;
+}
+
+.popup__section:first-of-type {
+  padding-top: 0;
 }
 
 .popup__title {
@@ -11,22 +35,18 @@
   text-align: center;
 }
 
+.popup__section-title {
+  margin: 0;
+
+  font-size: 1rem;
+}
+
 .popup__label {
   margin: 4px 0;
 
-  font-size: 1rem;
+  font-size: .95rem;
 }
 
-.popup__main-dictionary-selector {
+.popup__select {
   font-size: .9rem;
-}
-
-.popup__apply-btn {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 70vw;
-
-  font-size: 1rem;
 }
