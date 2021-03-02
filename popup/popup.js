@@ -10,3 +10,12 @@ saveBtn.addEventListener(
 function sendMainDictionaryId (selector) {
   chrome.runtime.sendMessage({ id: selector.value })
 }
+
+function showCurrentMainDictionary () {
+  chrome.storage.sync.get(['mainDictionary'], (result) => {
+    const option = document.querySelector(`[value="${result.mainDictionary}"]`)
+    option.setAttribute('selected', '')
+  })
+}
+
+showCurrentMainDictionary()
