@@ -28,10 +28,7 @@ function initContextListeners () {
     clickData.selectionText = clickData.selectionText.replace(/\s/g, '-')
 
     goToAllDictionaries(clickData, dictionaries, settings.mainDictionaryId)
-    goToMacmillan(clickData)
-    goToCambridge(clickData)
-    goToCollins(clickData)
-    goToLongman(clickData)
+    goToOneDictionary(clickData, dictionaries)
   })
 }
 
@@ -46,36 +43,14 @@ function goToAllDictionaries (clickData, dictionaries, mainDictionaryId) {
   }
 }
 
-function goToMacmillan (clickData) {
-  if (clickData.menuItemId === 'macmillan' && clickData.selectionText) {
-    chrome.tabs.create({
-      url: `https://www.macmillandictionary.com/dictionary/${settings.english}/${clickData.selectionText}`
-    })
-  }
-}
+function goToOneDictionary (clickData, dictionaries) {
+  if (clickData.menuItemId === 'all') return
 
-function goToCambridge (clickData) {
-  if (clickData.menuItemId === 'cambridge' && clickData.selectionText) {
-    chrome.tabs.create({
-      url: `https://dictionary.cambridge.org/dictionary/english/${clickData.selectionText}`
-    })
-  }
-}
+  dictionaries.forEach(dict => {
+    if (clickData.menuItemId !== dict.id) return
 
-function goToCollins (clickData) {
-  if (clickData.menuItemId === 'collins' && clickData.selectionText) {
-    chrome.tabs.create({
-      url: `https://www.collinsdictionary.com/dictionary/english/${clickData.selectionText}`
-    })
-  }
-}
-
-function goToLongman (clickData) {
-  if (clickData.menuItemId === 'longman' && clickData.selectionText) {
-    chrome.tabs.create({
-      url: `https://www.ldoceonline.com/dictionary/${clickData.selectionText}`
-    })
-  }
+    chrome.tabs.create({ url: `${dict.baseUrl}/${clickData.selectionText}`})
+  })
 }
 
 createContextMenus(contextMenus)
