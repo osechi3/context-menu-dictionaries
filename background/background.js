@@ -10,19 +10,6 @@ function createContextMenus (contextMenus) {
   })
 }
 
-function getStorageData () {
-  chrome.storage.sync.get(['mainDictionary'], (result) => {
-    settings.mainDictionaryId = result.mainDictionary ? result.mainDictionary : 'macmillan'
-  })
-}
-
-function initOnMessageListeners () {
-  chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    settings.mainDictionaryId = message.id
-    chrome.storage.sync.set({ mainDictionary: message.id })
-  })
-}
-
 function initContextListeners () {
   chrome.contextMenus.onClicked.addListener((clickData) => {
     clickData.selectionText = clickData.selectionText.replace(/\s/g, '-')
@@ -55,5 +42,3 @@ function goToOneDictionary (clickData, dictionaries) {
 
 createContextMenus(contextMenus)
 initContextListeners()
-initOnMessageListeners()
-getStorageData()
