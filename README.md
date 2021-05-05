@@ -1,5 +1,9 @@
 ## What is it?
-A Chrome Extension that lets you look up english words in popular dictionaries fast. The available dictionaries are:
+A Chrome Extension that lets you look up english words in popular dictionaries fast.
+
+![Demonstration gif](images/demonstration.gif)
+
+The available dictionaries are:
 
 + Macmillan
 + Cambridge
