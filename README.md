@@ -1,5 +1,5 @@
 ## What is it?
-A Chrome Extension that lets you look up english words in popular dictionaries fast.
+A Chrome Extension that lets you look up English words in popular dictionaries fast.
 
 ![Demonstration gif](./images/demonstration.gif)
 
@@ -20,7 +20,7 @@ The available dictionaries are:
 
 ## Usage
 
-1. Highlight an english word using your left mouse button.
+1. Highlight an English word using your left mouse button.
 2. Click on the word with the right mouse button.
 3. In the popup appeared hover over **English dictionaries** option.
 4. You should see five options to choose:
